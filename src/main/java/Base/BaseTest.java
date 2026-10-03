@@ -1,5 +1,8 @@
 package Base;
 
+import java.io.File;
+import java.time.Duration;
+
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
@@ -7,9 +10,6 @@ import org.testng.annotations.BeforeSuite;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
-
-import java.io.File;
-
 import utils.ConfigReader;
 import utils.DriverFactory;
 
@@ -43,6 +43,7 @@ public class BaseTest {
                 .withAppiumJS(appiumJSFile)
                 .withIPAddress(ip)
                 .usingPort(port)
+                .withTimeout(Duration.ofSeconds(90))
                 .build();
 
         service.start();
